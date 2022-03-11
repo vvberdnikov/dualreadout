@@ -35,7 +35,7 @@ int main(int argc,char **argv)
   
   Int_t stop=0;
    
-  Int_t Flag=1;
+  Int_t Flag=0;
 
   //  TFile *F=new TFile("../Test.root");
   //  char filename[100]="../RootFiles/April15.root"; //no filter
@@ -82,8 +82,8 @@ int main(int argc,char **argv)
 
 
   const Int_t nbins=10000;
-  const Int_t startbin=4000;  //4500
-   const Int_t endbin=5000;    //5500
+  const Int_t startbin=2600;  //4500
+   const Int_t endbin=3600;    //5500
 
 
   Double_t xmin =startbin;
@@ -158,8 +158,8 @@ int main(int argc,char **argv)
   Int_t MinBin1=0;
   Int_t MinBin2=0;
 
-  TH1I *MB1=new TH1I("MinBin1", " ",1000,0,1000);
-  TH1I *MB2=new TH1I("MinBin2", " ",1000,0,1000);
+  TH1I *MB1=new TH1I("MinBin1", " ",1000,-0.5,999.5);
+  TH1I *MB2=new TH1I("MinBin2", " ",1000,-0.5,999.5);
 
 
 
@@ -188,7 +188,7 @@ int main(int argc,char **argv)
 	    gr1->GetYaxis()->SetTitle("Amplitude, V ");
 	    
 	    gr1->Draw("AL");
-	    gr1->GetXaxis()->SetRangeUser(-0.00000005,0.0000001);
+	    // gr1->GetXaxis()->SetRangeUser(-0.00000005,0.0000001);
 	    gPad->Modified();
 	    gPad->Update();
 	    c1->Update();
@@ -203,7 +203,7 @@ int main(int argc,char **argv)
 	    
 	    
 	    gr2->Draw("AL");
-	    gr2->GetXaxis()->SetRangeUser(-0.00000005,0.0000001);
+	    // gr2->GetXaxis()->SetRangeUser(-0.00000005,0.0000001);
 	    gPad->Modified();
 	    gPad->Update();
      
@@ -291,12 +291,14 @@ int main(int argc,char **argv)
 
 
       //  if (MaxADC1>0.015 && MaxADC1<2.0)    // Threshold !!!!
-      	     if (MaxADC1>0.015 )    // Threshold !!!!
 
+      //     if (MaxADC1>0.015 )    // Threshold !!!!
+ if (MaxADC1>0.02 )  
+      //  if(1)
      {
        TSpectrum *s1 = new TSpectrum();
        // nfound = s1->SearchHighRes(source1,dest,nbins-startbin,1,Peak_threshold1,kFALSE,3,kFALSE,3);
-       nfound = s1->SearchHighRes(source1,dest,nbins-startbin,2,50,kFALSE,3,kFALSE,3);
+         nfound = s1->SearchHighRes(source1,dest,nbins-startbin,2,50,kFALSE,3,kFALSE,3);
           Double_t *xpeaks = s1->GetPositionX();
        // Float_t *xpeaks = s1->GetPositionX();
        
@@ -352,11 +354,13 @@ int main(int argc,char **argv)
      }
 
    // if (MaxADC2>0.03 && MaxADC2<2.0)   // Threshold !!!!
-    if (MaxADC2>0.015)   // Threshold !!!!
-     {
+
+   //if (MaxADC2>0.015)   // Threshold !!!!
+    if(MaxADC2>0.02)
+      {
        TSpectrum *s1 = new TSpectrum();
        // nfound = s1->SearchHighRes(source1,dest,nbins-startbin,1,Peak_threshold1,kFALSE,3,kFALSE,3);
-       nfound = s1->SearchHighRes(source2,dest,nbins-startbin,2,50,kFALSE,3,kFALSE,3);
+         nfound = s1->SearchHighRes(source2,dest,nbins-startbin,2,50,kFALSE,3,kFALSE,3);
           Double_t *xpeaks = s1->GetPositionX();
        //Float_t *xpeaks = s1->GetPositionX();
        
