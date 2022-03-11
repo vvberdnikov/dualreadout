@@ -41,7 +41,8 @@ int main()
    // TFile *f = new TFile("RootFiles/April18.root","RECREATE");
   
   
-   TFile *f = new TFile("./RootFiles/Sample_9_Dec_5.root","RECREATE");
+   TFile *f = new TFile("./RootFiles/Test.root","RECREATE");
+   // TFile *f = new TFile("/home/berdnik/Test.root","RECREATE");
    TTree *Tree= new TTree("PMT","PMT");
    
    Tree->Branch("Time",&Time,"Time[10000]/F");
@@ -62,7 +63,7 @@ int main()
 
    // Int_t Triggers=32402; //sample6 Nov_19
 
-   Int_t Triggers=2917; 
+   Int_t Triggers=4489; 
 
 
    Int_t l=0;
@@ -108,8 +109,7 @@ int main()
 
      cout<<"Here are the contents of "<< filename<<":\n";
        sprintf(filename,"../Data/Temp/DataLog_%d.csv",l);
-       cout<<"Here are the contents of "<< filename<<":\n";
-
+      
       ifstream in(filename);
      
       //cout<<"Here are the contents of "<< filename<<":\n";
@@ -127,16 +127,17 @@ int main()
 	  
 	  getline(in,line);
 	  in>>time>>a>>Ampl1>>a>>Ampl2>>a>>Ampl3>>a>>Ampl4; 
-	  // cout<<time<<" "<<a<<" "<<Ampl1<<" "<<a<<" "<<Ampl2<<endl;
+	  // cout<<time<<" "<<a<<" "<<Ampl1<<" "<<a<<" "<<Ampl2<<a<<" "<<Ampl3<<" "<<a<<" "<<Ampl4<<endl;
+	  //cout<<l<<endl;
 	  Time[nlines]=time;
 	  Amplitude1[nlines]=Ampl1;
 	  Amplitude2[nlines]=Ampl2;
 	  //   Tree->Fill();  
 	  nlines++;
-	  
+	  // cout<<nlines<<endl;
 	}
    
-      while(!in.eof());
+      while(in.eof());
       
       // printf(" found %d points\n",nlines);
       Tree->Fill();  

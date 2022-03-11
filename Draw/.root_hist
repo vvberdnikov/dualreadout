@@ -1,0 +1,66 @@
+TBrowser a1
+.q
+TFile F=new TFile("Results.root")
+TFile *F=new TFile("Results.root")
+.q
+TFile *F=new TFile("Results.root")
+F->ls()
+Pedestal1->Draw()
+.q
+TFile *F=new TFile("Results.root")
+Pedestal1->Draw()
+.q
+TFile *F=new TFile("Results.root")
+F->ls()
+Pedestal1->Draw()
+.q
+TFile *F=new TFile("Results.root")
+F->ls()
+Pedestal1->Draw()
+.q
+TFile *F=new TFile("Results.root")
+Pedestal1->Draw()
+.q
+TFile *F=new TFile("Results.root")
+Pedestal1->Draw()
+F->ls()
+Pedestal2->Draw()
+MiniBin1->Draw();
+MinBin1->Draw();
+MinBin2->Draw();
+TFile *F=new TFile("Results.root")
+MinBin2->Draw();
+.q
+TFile *F=new TFile("Results.root")
+MinBin1->Draw();
+Pedestal2->Draw()
+.q
+TBrowser a1
+.q
+TBrowser a1
+.q
+TBrowser a1
+.q
+TBrowser a1
+.q
+TBrowser a1
+.q
+TBrowser a1
+.q
+TBrowser a1
+.q
+TBrowser a1
+.q
+TBrowser a1
+.q
+TBrowser a1
+.q
+TBrowser a1
+.q
+TBrowser a1
+.q
+TBrowser a1
+.q
+TBrowser a1
+.q
+TBrowser a1
