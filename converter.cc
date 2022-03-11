@@ -32,11 +32,11 @@ int main()
    char a; 
 
    Int_t nlines = 0;
-   Float_t time, Ampl1, Ampl2, Ampl3, Ampl4; 
+   Double_t time, Ampl1, Ampl2, Ampl3, Ampl4; 
 
-   Float_t Time[10000]={0.};
-   Float_t Amplitude1[10000]={0.};
-   Float_t Amplitude2[10000]={0.};
+   Double_t Time[10000]={0.};
+   Double_t Amplitude1[10000]={0.};
+   Double_t Amplitude2[10000]={0.};
   
    // TFile *f = new TFile("RootFiles/April18.root","RECREATE");
   
@@ -45,9 +45,9 @@ int main()
    // TFile *f = new TFile("/home/berdnik/Test.root","RECREATE");
    TTree *Tree= new TTree("PMT","PMT");
    
-   Tree->Branch("Time",&Time,"Time[10000]/F");
-   Tree->Branch("Amplitude1",&Amplitude1,"Amplitude1[10000]/F");
-   Tree->Branch("Amplitude2",&Amplitude2,"Amplitude2[10000]/F");
+   Tree->Branch("Time",&Time,"Time[10000]/D");
+   Tree->Branch("Amplitude1",&Amplitude1,"Amplitude1[10000]/D");
+   Tree->Branch("Amplitude2",&Amplitude2,"Amplitude2[10000]/D");
 
    // Number of aquired scope files
   
@@ -108,7 +108,7 @@ int main()
 	*/
 
      cout<<"Here are the contents of "<< filename<<":\n";
-       sprintf(filename,"../Data/Temp/DataLog_%d.csv",l);
+       sprintf(filename,"../Data/2022-03-11-Sample6/DataLog_%d.csv",l);
       
       ifstream in(filename);
      
@@ -136,9 +136,9 @@ int main()
 	  nlines++;
 	  // cout<<nlines<<endl;
 	}
-   
-      while(in.eof());
+      while(!in.eof() && nlines<10000);
       
+      // cout<<"Found "<<nlines<<" lines"<<endl;
       // printf(" found %d points\n",nlines);
       Tree->Fill();  
       in.close();

@@ -89,11 +89,11 @@ int main(int argc,char **argv)
   Double_t xmin =startbin;
   Double_t xmax=endbin;
 
-    TH1F *Waveform1=new TH1F("Waveform1", "",endbin-startbin,xmin+0.5,xmax+0.5);
-    TH1F *Waveform1_a=new TH1F("Waveform1_a","",endbin-startbin,xmin+0.5,xmax+0.5);  
+    TH1D *Waveform1=new TH1D("Waveform1", "",endbin-startbin,xmin+0.5,xmax+0.5);
+    TH1D *Waveform1_a=new TH1D("Waveform1_a","",endbin-startbin,xmin+0.5,xmax+0.5);  
 
-    TH1F *Waveform2=new TH1F("Waveform2", "",endbin-startbin,xmin+0.5,xmax+0.5);
-   TH1F *Waveform2_a=new TH1F("Waveform2_a","",nbins,xmin+0.5,xmax+0.5);  
+    TH1D *Waveform2=new TH1D("Waveform2", "",endbin-startbin,xmin+0.5,xmax+0.5);
+   TH1D *Waveform2_a=new TH1D("Waveform2_a","",nbins,xmin+0.5,xmax+0.5);  
 
  
   Double_t source1[nbins]={0};
@@ -108,33 +108,33 @@ int main(int argc,char **argv)
   Double_t Pedestal1=0;
   Double_t Pedestal2=0;
 
-  TH1F *Ped1=new TH1F("Pedestal1", " ",50,-0.01,0.01);
-  TH1F *Ped2=new TH1F("Pedestal2", " ",50,-0.01,0.01);
+  TH1D *Ped1=new TH1D("Pedestal1", " ",50,-0.01,0.01);
+  TH1D *Ped2=new TH1D("Pedestal2", " ",50,-0.01,0.01);
 
 
-  Float_t MaxADC1=0;
-  Float_t MaxADC2=0;
+  Double_t MaxADC1=0;
+  Double_t MaxADC2=0;
   
-  Float_t RiseTime1=0;
-  Float_t RiseTime2=0;
-  TH1F *RT1=new TH1F("RiseTime1", " ",500,0,10);
-  TH1F *RT2=new TH1F("RiseTime2", " ",500,0,10);
+  Double_t RiseTime1=0;
+  Double_t RiseTime2=0;
+  TH1D *RT1=new TH1D("RiseTime1", " ",500,0,10);
+  TH1D *RT2=new TH1D("RiseTime2", " ",500,0,10);
 
-  Float_t PulseSlope1=0;
-  Float_t PulseSlope2=0;
-  TH1F *PS1=new TH1F("PulseSlope1", " ",250,-0.51,0.49);      //Pulse Slope
-  TH1F *PS2=new TH1F("PulseSlope2", " ",250,-0.51,0.49);
+  Double_t PulseSlope1=0;
+  Double_t PulseSlope2=0;
+  TH1D *PS1=new TH1D("PulseSlope1", " ",250,-0.51,0.49);      //Pulse Slope
+  TH1D *PS2=new TH1D("PulseSlope2", " ",250,-0.51,0.49);
 
   TH1I *PA1=new TH1I("PulseAmplitude1", " ",200,-0.01,3.99);           //Peak Amplitude
   TH1I *PA2=new TH1I("PulseAmplitude2", " ",200,-0.01,3.99);
 
 
-  Float_t Charge1=0;
-  Float_t Charge2=0;
+  Double_t Charge1=0;
+  Double_t Charge2=0;
 
-  TH1F *Ch1=new TH1F("Integral1 ", " ",1000,-100.5,100.5);           //Charge
-  TH1F *Ch2=new TH1F("Integral2 ", " ",1000,-100.5,100.5);
-  TH1F *Ch_S=new TH1F("Integral sum ", " ",1000,-100.5,100.5);
+  TH1D *Ch1=new TH1D("Integral1 ", " ",1000,-100.5,100.5);           //Charge
+  TH1D *Ch2=new TH1D("Integral2 ", " ",1000,-100.5,100.5);
+  TH1D *Ch_S=new TH1D("Integral sum ", " ",1000,-100.5,100.5);
 
   Double_t fPositionX1[100]={0};
   Double_t fPositionY1[100]={0};
@@ -145,8 +145,8 @@ int main(int argc,char **argv)
   TF1 *Fitt2=new TF1("Fitt2","pol0",-15,15);
 
   const Int_t ADC_threshold=10;
-  Float_t Peak_threshold1=0;
-  Float_t Peak_threshold2=0;
+  Double_t Peak_threshold1=0;
+  Double_t Peak_threshold2=0;
  
    Double_t dest[nbins]={0};
 
@@ -163,7 +163,7 @@ int main(int argc,char **argv)
 
 
 
-  Float_t BIAS=0.0;
+  Double_t BIAS=0.0;
 
 
   mg->SetTitle(";Supply voltage, V;Peak amplitude, V");
